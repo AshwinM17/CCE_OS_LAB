@@ -1,0 +1,3 @@
+echo "hello"
+Manipal Institute of Technology
+Manipal Institute of Technology
