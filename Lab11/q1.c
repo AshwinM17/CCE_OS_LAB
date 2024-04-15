@@ -63,6 +63,10 @@ void SCAN(int *requests, int n, int start, int direction) {
             }
         }
     }
+    
+    totalHeadMovement += absDiff(currentHead,199);
+    currentHead=199;
+    
     // Processing requests towards the left
     for (int i = 199; i >= 0; i--) {
         for (int j = 0; j < n; j++) {
