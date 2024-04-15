@@ -58,6 +58,7 @@ void SCAN(int *requests, int n, int start, int direction) {
             if (requests[j] == i) {
                 totalHeadMovement += absDiff(currentHead, requests[j]);
                 currentHead = requests[j];
+                requests[j]=-1;
                 printf("%d ", currentHead);
             }
         }
@@ -96,17 +97,23 @@ void C_SCAN(int *requests, int n, int start) {
     }
     // Processing requests towards the left from the beginning
     totalHeadMovement += 199 - currentHead;
+    int flag=0;
     currentHead = 0;
     printf("0 ");
     // Processing remaining requests towards the right
     for (int i = 0; i < start; i++) {
         for (int j = 0; j < n; j++) {
             if (requests[j] == i) {
+            	flag=1;
                 totalHeadMovement += absDiff(currentHead, requests[j]);
                 currentHead = requests[j];
                 printf("%d ", currentHead);
             }
         }
+    }
+    if(flag==1)
+    {
+    	totalHeadMovement+=199;
     }
 
     printf("\nTotal Head Movement: %d\n\n", totalHeadMovement);
