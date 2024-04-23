@@ -10,7 +10,7 @@ void worst_fit(int n,int m,int *holes,int *process){
 		maxfit=INT_MIN;
 		max=0;
 		for(j=0;j<n;j++){
-			if(process[i]<holes[j] && holes[j]-process[i]>maxfit){
+			if(process[i]<=holes[j] && holes[j]-process[i]>maxfit){
 				max=j;
 				maxfit=holes[j]-process[i];
 			}

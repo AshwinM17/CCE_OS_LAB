@@ -1,13 +1,14 @@
+
 #!/bin/sh
 
 selection_sort() {
-local arr=("$@")
+local arr=($@) # array creation
 local n=${#arr[@]}
 
 for((i=0; i < n-1; i++)); do
 min=$i
 for((j=i+1; j < n;j++));do
-if [ "${arr[j]}" \< "{arr[min]}" ];then
+if [ ${arr[j]} \< ${arr[min]} ];then
 min=$j
 fi
 done
@@ -23,3 +24,4 @@ done
 }
 
 selection_sort "$@"
+

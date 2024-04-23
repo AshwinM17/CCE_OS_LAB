@@ -24,7 +24,7 @@ void main()
     pid=fork();
     if (pid == 0)
     {
-        printf("Child\n");
+        printf("Child Process\n");
         for (i = 0; i < 5; i++)
         {
             for (j = 0; j < 5 - i -1; j++)
@@ -38,17 +38,19 @@ void main()
             }
         }
         for(i=0;i<5;i++){
-            printf("%s ",strings[i]);
+            printf("Child: %s \n",strings[i]);
         }
+        
         printf("\n");
+        exit(21);
     }else if(pid>0){
         wait(&status);
-        printf("Parent\n");
-        if(WIFEXITED(status)){
-            for(int i=0;i<5;i++){
-                printf("%s ",string_cpy[i]);
-            }
+        printf("Parent Process\n");
+      	for(int i=0;i<5;i++){
+      		
+                printf("Parent: %s \n",string_cpy[i]);
         }
+        printf("%d",WEXITSTATUS(status));
     }else{
         printf("Error");
     }

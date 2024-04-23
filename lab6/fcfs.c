@@ -32,15 +32,15 @@ int main(){
 		}
 		process[min].completed=true;
 		time=time + process[min].burst_time;
-		waiting_time[process[min].pid]=time-process[min].burst_time-process[min].arrival_time;
+		waiting_time[min]=time-process[min].burst_time-process[min].arrival_time;
 		printf("Process %d completed at %d\n",process[min].pid,time);
-		printf("Waiting time %d\n\n",waiting_time[process[min].pid]);
+		printf("Waiting time %d\n\n",waiting_time[min]);
 	}
 	float avg=0;
-	for(i=1;i<4;i++){
+	for(i=0;i<3;i++){
 		avg+=waiting_time[i];
 	}
 	avg=avg/3;
-	printf("Average waiting time:%d",avg);
+	printf("Average waiting time:%f\n",avg);
 	return 0;
 }

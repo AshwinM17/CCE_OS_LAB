@@ -8,14 +8,14 @@ bool checksafety(bool *completed,int *available,int** need,int** allocation,int 
 	bool safe=true;
 	int i,j;
 	int completed_no=0;
-	while(safe && completed_no<m){
+	while(safe && completed_no<m){ //safe makes sure that in each instance atleast one process got cpmpleted
 		//printf("Safe");
-		safe = false;
-		for(i=0;i<m;i++){
+		safe = false; 
+		for(i=0;i<m;i++){ // returns a process which 
             		if(!completed[i])
             		{
                 		eligible=true;
-   		             	for(j=0;j<n;j++)
+   		             	for(j=0;j<n;j++) //all resources
    		             	{
         	            		if(available[j]<need[i][j])
         	            		{
@@ -50,8 +50,7 @@ int main()
 	scanf("%d",&m);
 	printf("Enter the number of resources:");
 	scanf("%d",&n);
-
-	int *available = (int*)malloc(n*sizeof(int));
+	int available[n];
 	bool *completed= (bool*)malloc(m*sizeof(bool));
 	int** max = (int**)malloc(m * sizeof(int*));
 	int** allocation = (int**)malloc(m * sizeof(int*));
@@ -61,6 +60,8 @@ int main()
 		allocation[i] = (int*)malloc(n * sizeof(int));
 		need[i] = (int*)malloc(n * sizeof(int));		
 	}
+	//dynamic alocation as to be sent to a fn
+	
 	//creating copies of the structures for resource request algorithm
 	int *cpyavailable = (int*)malloc(n*sizeof(int));
 	bool *cpycompleted= (bool*)malloc(m*sizeof(bool));

@@ -7,7 +7,7 @@ void first_fit(int n,int m,int *holes,int *process){
 	int i,j;
 	for(i=0;i<m;i++){
 		for(j=0;j<n;j++){
-			if(process[i]<holes[j]){
+			if(process[i]<=holes[j]){
 				holes[j]-=process[i];
 				printf("Process %d in hole %d\n",(i+1),(j+1));
 				break;

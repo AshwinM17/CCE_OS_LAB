@@ -38,19 +38,14 @@ int findOptimalIndex(int *pages, int numOfFrames, int *refString, int refLength,
 void FIFO(int *refString, int refLength, int numOfFrames) {
     int *frames = (int *)malloc(numOfFrames * sizeof(int));
     int pageFaults = 0;
-    int currentFrame = 0;
 
     for (int i = 0; i < refLength; i++) {
         int currentPage = refString[i];
 
         // Check if page is already in memory
         if (findFIFOIndex(frames, numOfFrames, currentPage) == -1) {
-            // If frame is not full, insert page
-            if (currentFrame < numOfFrames) {
-                frames[currentFrame++] = currentPage;
-            } else { // If frame is full, replace page
-                frames[pageFaults % numOfFrames] = currentPage;
-            }
+         
+            frames[pageFaults % numOfFrames] = currentPage;
             pageFaults++;
         }
     }

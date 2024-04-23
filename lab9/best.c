@@ -9,15 +9,15 @@ void best_fit(int n,int m,int *holes,int *process){
 	for(i=0;i<m;i++){
 		minfit=INT_MAX;
 		min=0;
-		for(j=0;j<n;j++){
-			if(process[i]<holes[j] && holes[j]-process[i]<minfit){
+		for(j=0;j<n;j++){//selection of best hole
+			if(process[i]<=holes[j] && holes[j]-process[i]<minfit){
 				min=j;
 				minfit=holes[j]-process[i];
 			}
 		}
 		if(minfit!=INT_MAX){
 			holes[min]-=process[i];
-			printf("Process %d in hole %d\n",(i+1),(min+1));
+			printf("Process %d in hole %d\n",(i),(min));
 		}
 		for(j=0;j<n;j++){
 			printf("Hole %d:%d\n",j,holes[j]);

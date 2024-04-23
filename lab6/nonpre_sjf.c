@@ -23,27 +23,32 @@ int main(){
 		scanf("%d",&process[i].burst_time);
 		process[i].completed=false;
 	}
-	while(tot_comp<5){
+	while(tot_comp<5)
+	{
 		int min_burst = INT_MAX;
-        int min = -1;
+        	int min = -1;
 
-        for (j = 4; j >=0; j--) {
-            if (process[j].arrival_time <= time && !process[j].completed && process[j].burst_time < min_burst) {
-                min = j;
-                min_burst = process[j].burst_time;
-            }
-        }
+        	for (j = 4; j >=0; j--) 
+        	{
+            		if (process[j].arrival_time <= time && !process[j].completed && process[j].burst_time < min_burst) 
+            		{
+                		min = j;
+                		min_burst = process[j].burst_time;
+            		}
+        	}
 
-        if (min > -1) {
-			printf("Process pid:%d is executing at time:%d\n",process[min].pid,time);
-            time += process[min].burst_time;
-            waiting_time[min] = time - process[min].arrival_time - process[min].burst_time;
-            turnaround_time[min] = time - process[min].arrival_time;
-            process[min].completed = true;
-            tot_comp++;
-        } else {
-            time++;
-        }
+        	if (min > -1) {
+				printf("Process pid:%d is executing at time:%d\n",process[min].pid,time);
+	            time += process[min].burst_time;
+	            waiting_time[min] = time - process[min].arrival_time - process[min].burst_time;
+	            turnaround_time[min] = time - process[min].arrival_time;
+	            process[min].completed = true;
+	            tot_comp++;
+	        } 
+	        else 
+	        	{
+	        	    time++;
+		        }
 	}	
 	printf("Process\tWaiting Time\tTurnaround Time\n");
 		for (i = 0; i < 5; i++) {
